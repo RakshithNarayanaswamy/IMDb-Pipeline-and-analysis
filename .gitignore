@@ -1,0 +1,30 @@
+.DS_Store
+# big data / artifacts
+data/
+*.parquet
+*.csv
+*.tsv
+*.gz
+*.zip
+*.7z
+*.db
+*.sqlite
+*.jar
+*.whl
+
+# typical build outputs (customize if needed)
+target/
+dist/
+build/
+# Tableau
+Tableau/
+*.twb
+*.twbx
+*.tbwx
+*.hyper
+Tableau/
+*.hyper
+*.twbx
+*.tbwx
+.DS_Store
+
