@@ -35,11 +35,15 @@ As a Business Analyst / Data Consumer, this system enables the ability to:
 
 🧱 Architecture Overview (Medallion Pattern)
 
-
 flowchart TD
-    A[IMDb Raw Files<br/>(TSV / GZ)] --> B[Bronze Layer<br/>Raw ingestion<br/>Schema enforcement<br/>Audit columns]
-    B --> C[Silver Layer<br/>Cleansing & normalization<br/>Array explosion<br/>Data validation]
-    C --> D[Gold Layer<br/>Star schema<br/>SCD Type 2 dimensions<br/>BI-ready marts]
+    A["IMDb Raw Files (TSV / GZ)"]
+    B["Bronze Layer<br/>Raw ingestion<br/>Schema enforcement<br/>Audit columns"]
+    C["Silver Layer<br/>Cleansing & normalization<br/>Array explosion<br/>Data validation"]
+    D["Gold Layer<br/>Star schema<br/>SCD Type 2 dimensions<br/>BI-ready marts"]
+
+    A --> B
+    B --> C
+    C --> D
 
 
 ⸻
