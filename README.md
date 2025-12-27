@@ -12,24 +12,24 @@ This project implements a full-scale data lakehouse architecture using IMDb non-
 The solution follows the Medallion Architecture (Bronze → Silver → Gold) and applies data modeling, SCD-Type 2 dimensions, validation rules, and BI reporting to answer real-world movie analytics questions.
 
 The platform enables stakeholders to analyze:
-	•	Movie performance by genre, year, rating, region
-	•	Directors, writers, and crew popularity
-	•	Adult vs non-adult content trends
-	•	Episode and season-level insights for non-movie titles
+•	Movie performance by genre, year, rating, region
+•	Directors, writers, and crew popularity
+•	Adult vs non-adult content trends
+•	Episode and season-level insights for non-movie titles
 
 ⸻
 
 🎯 Business Objectives
 
 As a Business Analyst / Data Consumer, this system enables the ability to:
-	•	Identify popular directors and writers across movies
-	•	Analyze top-rated movies by year and genre
-	•	Explore movie trends based on ratings and votes
-	•	Track adult vs non-adult movie distribution
-	•	Analyze movie runtime trends over time
-	•	Understand regional and language-based releases
-	•	Compare TV series seasons and episode counts vs ratings
-	•	Explore crew roles, jobs, and character involvement per title
+•	Identify popular directors and writers across movies
+•	Analyze top-rated movies by year and genre
+•	Explore movie trends based on ratings and votes
+•	Track adult vs non-adult movie distribution
+•	Analyze movie runtime trends over time
+•	Understand regional and language-based releases
+•	Compare TV series seasons and episode counts vs ratings
+•	Explore crew roles, jobs, and character involvement per title
 
 ⸻
 
@@ -47,44 +47,44 @@ flowchart TD
 📂 Data Sources
 
 IMDb Non-Commercial Datasets:
-	•	title.basics – Movie & title metadata
-	•	title.akas – Regional & language titles
-	•	title.crew – Directors & writers
-	•	title.principals – Cast & crew roles
-	•	title.episode – Season & episode data
-	•	title.ratings – Ratings & vote counts
-	•	name.basics – Personnel & professions
+•	title.basics – Movie & title metadata
+•	title.akas – Regional & language titles
+•	title.crew – Directors & writers
+•	title.principals – Cast & crew roles
+•	title.episode – Season & episode data
+•	title.ratings – Ratings & vote counts
+•	name.basics – Personnel & professions
 
 Supporting reference data:
-	•	Country / Region codes
-	•	ISO-639 Language codes
+•	Country / Region codes
+•	ISO-639 Language codes
 
 ⸻
 
 🔄 Data Processing & Engineering
 
 🟤 Bronze Layer (Raw Ingestion)
-	•	Ingested IMDb TSV files into Databricks Delta tables
-	•	Preserved raw structure with:
-	•	source_file
-	•	ingestion_timestamp
-	•	record_hash
-	•	Row count validation to ensure no data loss
+•	Ingested IMDb TSV files into Databricks Delta tables
+•	Preserved raw structure with:
+•	source_file
+•	ingestion_timestamp
+•	record_hash
+•	Row count validation to ensure no data loss
 
 ⸻
 
 ⚪ Silver Layer (Cleansing & Standardization)
-	•	Removed invalid \N values
-	•	Exploded multi-valued arrays:
-	•	genres
-	•	directors
-	•	writers
-	•	primaryProfession
-	•	knownForTitles
-	•	Standardized:
-	•	Years, runtime, flags (adult/non-adult)
-	•	Region and language codes
-	•	Applied data quality checks before promoting records
+•	Removed invalid \N values
+•	Exploded multi-valued arrays:
+•	genres
+•	directors
+•	writers
+•	primaryProfession
+•	knownForTitles
+•	Standardized:
+•	Years, runtime, flags (adult/non-adult)
+•	Region and language codes
+•	Applied data quality checks before promoting records
 
 ⸻
 
@@ -93,24 +93,24 @@ Supporting reference data:
 Designed a star schema with surrogate keys and SCD-Type 2 dimensions.
 
 Core Dimensions
-	•	dim_title (SCD-2)
-	•	dim_name (SCD-2)
-	•	dim_genre
-	•	dim_role
-	•	dim_language
-	•	dim_region
-	•	dim_year
+•	dim_title (SCD-2)
+•	dim_name (SCD-2)
+•	dim_genre
+•	dim_role
+•	dim_language
+•	dim_region
+•	dim_year
 
 Fact Tables
-	•	fact_movie_ratings
-	•	fact_title_crew
-	•	fact_episode_metrics
+•	fact_movie_ratings
+•	fact_title_crew
+•	fact_episode_metrics
 
 Key SCD-2 Features
-	•	version_number
-	•	is_current_flag
-	•	effective_start_date
-	•	effective_end_date
+•	version_number
+•	is_current_flag
+•	effective_start_date
+•	effective_end_date
 
 ⸻
 
